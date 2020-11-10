@@ -109,15 +109,17 @@ void Game::render()
     for(auto it : this->background)
         this->window->draw(*it);
 
+    if(!this->pipes.empty())
+        for(auto it : this->pipes)
+            this->window->draw(*it);
+
+
     for(auto it : this->ground)
         this->window->draw(*it);
 
     this->window->draw(*this->bird);
     
-    if(!this->pipes.empty())
-        for(auto it : this->pipes)
-            this->window->draw(*it);
-
+    
 
     this->text_score.setString(std::to_string(this->score));
     this->text_score.setPosition(this->window->getSize().x / 2 - (this->text_score.getGlobalBounds().width * this->text_score.getScale().x)/2,20.f);
